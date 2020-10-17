@@ -1,1 +1,9 @@
+com/grupoa/domain/User.class
+com/grupoa/config/ApplicationProperties.class
+com/grupoa/service/UserService.class
+com/grupoa/config/ApplicationConfiguration.class
+com/grupoa/rest/UserResource.class
 com/grupoa/GrupoaApplication.class
+com/grupoa/config/ApplicationProperties$Ui.class
+com/grupoa/domain/QUser.class
+com/grupoa/repository/UserRepository.class
