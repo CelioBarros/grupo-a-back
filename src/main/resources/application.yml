@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://docker-database-postgres:5432/grupoa
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080

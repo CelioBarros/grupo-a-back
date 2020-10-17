@@ -1,0 +1,26 @@
+version: '3'
+services:
+  docker-grupoa:
+    build: .
+    container_name: docker-grupoa
+    ports:
+      - "8080:8080"
+    depends_on:
+      - docker-database-postgres
+    networks:
+      - application
+
+  docker-database-postgres:
+    image: postgres:10.4
+    container_name: docker-database-postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - application
+    environment:
+      - POSTGRES_DB=grupoa
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+networks:
+  application:
