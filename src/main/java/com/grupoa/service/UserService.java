@@ -2,6 +2,9 @@ package com.grupoa.service;
 
 import com.grupoa.domain.*;
 import com.grupoa.repository.UserRepository;
+import com.querydsl.core.types.Predicate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,4 +30,10 @@ public class UserService {
     public List<User> getAll() {
         return userRepository.findAll();
     }
+
+    public Page<User> get(Predicate predicate, Pageable pageable) {
+        Page<User> result = userRepository.findAll(predicate, pageable);
+        return result;
+    }
+
 }

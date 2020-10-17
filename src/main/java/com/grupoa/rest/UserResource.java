@@ -2,9 +2,14 @@ package com.grupoa.rest;
 
 import com.grupoa.domain.User;
 import com.grupoa.service.UserService;
+import com.querydsl.core.types.Predicate;
 import io.micrometer.core.annotation.Timed;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,12 +69,29 @@ public class UserResource {
     /**
      * GET  /users : get all users.
      *
-     * @return the users list
+     * * @return the ResponseEntity with status 200 (OK) and the list of users in body
      */
     @GetMapping("/users")
     @Timed
     @Transactional(readOnly = true)
-    public List<User> getUsers() {
+    public Page<User> getUsers(
+            @QuerydslPredicate(root = User.class) Predicate predicate,
+            @ApiParam Pageable pageable) {
+        log.debug("REST user to get Users: {}");
+        Page<User> result = userService.get(predicate, pageable);
+        return result;
+    }
+
+
+    /**
+     * GET  /users/list : get all users.
+     *
+     * @return the users list
+     */
+    @GetMapping("/users/list")
+    @Timed
+    @Transactional(readOnly = true)
+    public List<User> getUsersList() {
         log.debug("REST user to get Users: {}");
         List<User> result = userService.getAll();
         return result;
