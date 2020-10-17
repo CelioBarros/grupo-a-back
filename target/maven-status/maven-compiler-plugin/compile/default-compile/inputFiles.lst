@@ -2,6 +2,7 @@
 /Users/celiobarros/Documents/workspace/grupo-a-back/target/generated-sources/com/grupoa/domain/QUser.java
 /Users/celiobarros/Documents/workspace/grupo-a-back/src/main/java/com/grupoa/rest/UserResource.java
 /Users/celiobarros/Documents/workspace/grupo-a-back/src/main/java/com/grupoa/config/ApplicationConfiguration.java
+/Users/celiobarros/Documents/workspace/grupo-a-back/src/main/java/com/grupoa/config/WebConfig.java
 /Users/celiobarros/Documents/workspace/grupo-a-back/src/main/java/com/grupoa/config/ApplicationProperties.java
 /Users/celiobarros/Documents/workspace/grupo-a-back/src/main/java/com/grupoa/service/UserService.java
 /Users/celiobarros/Documents/workspace/grupo-a-back/src/main/java/com/grupoa/repository/UserRepository.java

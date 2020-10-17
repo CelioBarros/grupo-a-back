@@ -1,3 +1,4 @@
+com/grupoa/config/WebConfig.class
 com/grupoa/domain/User.class
 com/grupoa/config/ApplicationProperties.class
 com/grupoa/service/UserService.class
