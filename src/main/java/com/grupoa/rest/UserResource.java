@@ -97,4 +97,18 @@ public class UserResource {
         return result;
     }
 
+    /**
+     * DELETE  /users/:ra : delete the "ra" user.
+     *
+     * @param ra the ra of the user to delete
+     * @return the ResponseEntity with status 200 (OK)
+     */
+    @DeleteMapping("/users/{ra}")
+    @Transactional
+    public ResponseEntity<Void> deleteActivity(@PathVariable Long ra) {
+        log.debug("REST request to delete User: {}", ra);
+        userService.delete(ra);
+        return ResponseEntity.ok().build();
+    }
+
 }

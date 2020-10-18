@@ -24,4 +24,6 @@ public interface UserRepository extends
     }
 
     Optional<User> findByRa(Long ra);
+
+    void deleteByRa(Long ra);
 }

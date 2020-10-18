@@ -36,4 +36,8 @@ public class UserService {
         return result;
     }
 
+    public void delete(Long ra) {
+        System.out.println(ra);
+        userRepository.deleteByRa(ra);
+    }
 }
