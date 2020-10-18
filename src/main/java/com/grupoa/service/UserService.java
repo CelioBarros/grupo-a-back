@@ -40,4 +40,9 @@ public class UserService {
         System.out.println(ra);
         userRepository.deleteByRa(ra);
     }
+
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
 }

@@ -4,6 +4,7 @@ import com.grupoa.domain.User;
 import com.grupoa.service.UserService;
 import com.querydsl.core.types.Predicate;
 import io.micrometer.core.annotation.Timed;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,6 +110,25 @@ public class UserResource {
         log.debug("REST request to delete User: {}", ra);
         userService.delete(ra);
         return ResponseEntity.ok().build();
+    }
+
+    /**
+     * PUT  /users : Updates an existing activity.
+     *
+     * @param user the user to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated user,
+     * or with status 400 (Bad Request) if the user is not valid,
+     * or with status 500 (Internal Server Error) if the user couldn't be updated
+     */
+    @PutMapping("/users")
+    @Timed
+    public ResponseEntity<User> updateUser(
+            @RequestBody User user) {
+
+        log.debug("REST request to update User : {}", user);
+        User result = userService.update(user);
+        return ResponseEntity.ok()
+                .body(result);
     }
 
 }
