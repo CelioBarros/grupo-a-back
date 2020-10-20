@@ -126,7 +126,13 @@ public class UserResource {
             @RequestBody User user) {
 
         log.debug("REST request to update User : {}", user);
-        User result = userService.update(user);
+        User result = null;
+        try {
+            result = userService.update(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(result);
+        }
         return ResponseEntity.ok()
                 .body(result);
     }

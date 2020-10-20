@@ -37,12 +37,17 @@ public class UserService {
     }
 
     public void delete(Long ra) {
-        System.out.println(ra);
         userRepository.deleteByRa(ra);
     }
 
-    public User update(User user) {
+    public User update(User user) throws Exception {
+        checkCanUpdate(user);
         return userRepository.save(user);
     }
 
+    private void checkCanUpdate(User user) throws Exception {
+        User registeredUser = getByRa(user.getRa()).get();
+        if (!registeredUser.getRa().equals(user.getRa())) throw new Exception("Cant change ra");
+        if (!registeredUser.getCpf().equals(user.getCpf())) throw new Exception("Cant change cpf");
+    }
 }
