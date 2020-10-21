@@ -113,25 +113,25 @@ public class UserResource {
     }
 
     /**
-     * PUT  /users : Updates an existing activity.
+     * PUT  /users/{ra} : Updates an existing activity.
      *
      * @param user the user to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated user,
      * or with status 400 (Bad Request) if the user is not valid,
      * or with status 500 (Internal Server Error) if the user couldn't be updated
      */
-    @PutMapping("/users")
+    @PutMapping("/users/{ra}")
     @Timed
-    public ResponseEntity<User> updateUser(
+    public ResponseEntity<User> updateUser(@PathVariable Long ra,
             @RequestBody User user) {
 
         log.debug("REST request to update User : {}", user);
         User result = null;
         try {
-            result = userService.update(user);
+            result = userService.update(ra, user);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body(result);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok()
                 .body(result);

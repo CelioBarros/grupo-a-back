@@ -40,14 +40,14 @@ public class UserService {
         userRepository.deleteByRa(ra);
     }
 
-    public User update(User user) throws Exception {
-        checkCanUpdate(user);
+    public User update(Long ra, User user) throws Exception {
+        checkErrors(ra, user);
         return userRepository.save(user);
     }
 
-    private void checkCanUpdate(User user) throws Exception {
-        User registeredUser = getByRa(user.getRa()).get();
-        if (!registeredUser.getRa().equals(user.getRa())) throw new Exception("Cant change ra");
+    private void checkErrors(Long ra, User user) throws Exception {
+        if (!ra.equals(user.getRa())) throw new Exception("Cant change ra");
+        User registeredUser = getByRa(ra).get();
         if (!registeredUser.getCpf().equals(user.getCpf())) throw new Exception("Cant change cpf");
     }
 }
